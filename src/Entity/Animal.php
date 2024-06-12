@@ -31,6 +31,10 @@ class Animal
     #[ORM\OneToMany(targetEntity: RapportVeterinaire::class, mappedBy: 'animal')]
     private Collection $rapports;
 
+    #[ORM\ManyToOne(inversedBy: 'animals')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Habitat $habitat = null;
+
     public function __construct()
     {
         $this->rapports = new ArrayCollection();
@@ -103,6 +107,18 @@ class Animal
                 $rapport->setAnimal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getHabitat(): ?Habitat
+    {
+        return $this->habitat;
+    }
+
+    public function setHabitat(?Habitat $habitat): static
+    {
+        $this->habitat = $habitat;
 
         return $this;
     }
