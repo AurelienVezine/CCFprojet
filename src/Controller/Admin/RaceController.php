@@ -20,7 +20,7 @@ class RaceController extends AbstractController
     {
         $races = $raceRepository->findAll();
         return $this->render('admin/race/index.html.twig', [
-            '$races' => $races,
+            'races' => $races,
         ]);
     }
 
