@@ -21,24 +21,18 @@
         <tbody>
         {% for animal in animals %}
             <tr>
-                <td>
-                    {{animal.prenom}}
-                </td>
-                <td>
-                    {{animal.race}}
-                </td>
-                <td>
-                    {{animal.habitat}}
-                </td>
-                <td>
-                    {{animal.etat}}
-                </td>
-                <td>
-                    {{animal.rapports}}
-                </td>
+                <td>{{animal.prenom}}</td>
+                <td>Probleme race</td>
+                <td>Probléme habitat</td>
+                <td>Probléme etat</td>
+                <td>Probléme rapport</td>
                 <td>
                     <div class="d-flex gap-1">
-                        <a class="btn btn-primary btn-sm" href="{{ path('admin.animal.edit', {id: recette.id})}}">Editer</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.animal.edit', {id: animal.id})}}">Editer</a>
+                        <form action="{{ path('admin.animal.delete', {id: animal.id})}}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
                     </div>
                 </td>
             </tr>

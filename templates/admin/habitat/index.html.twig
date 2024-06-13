@@ -1,7 +1,38 @@
-{% extends 'admin.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
 {% block title %}Admin - Les Habitats{% endblock %}
 
 {% block body %}
-<h1>Les Habitats</h1>
+    <h1>Les Habitats</h1>
+    <p>
+        <a class="btn btn-dark" href="{{ path('admin.habitat.create') }}">Ajouter un habitat</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Nom</th>
+            <th> Description</th>
+            <th> Avis </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for habitat in habitats %}
+            <tr>
+                <td>{{habitat.nom}}</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.habitat.edit', {id: habitat.id})}}">Editer</a>
+                        <form action="{{ path('admin.habitat.delete', {id: habitat.id})}}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

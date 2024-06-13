@@ -1,10 +1,9 @@
 {% extends 'admin/admin.html.twig' %}
 
-{% block title %}Admin - Creation d'un animal{% endblock %}
+{% block title %}Admin - Edition d'un animal{% endblock %}
 
 {% block body %}
-    <h1>Creation nouvelle animal</h1>
+    <h1>Editer l'animal</h1>
     {{ form(form) }}
     <a class="btn btn-danger btn-sm" href="{{ path('admin.animal.index')}}">Retour</a>
-
 {% endblock %}

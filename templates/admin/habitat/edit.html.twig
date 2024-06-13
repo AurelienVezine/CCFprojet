@@ -1,0 +1,9 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Admin - Edition d'un habitat{% endblock %}
+
+{% block body %}
+    <h1>Editer l'habitat</h1>
+    {{ form(form) }}
+    <a class="btn btn-danger btn-sm" href="{{ path('admin.habitat.index')}}">Retour</a>
+{% endblock %}

@@ -11,9 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 
 
-#[route("/admin/animal", name: "admin.animal.")]
+#[Route("/admin/animal", name: "admin.animal.")]
 class AnimalController extends AbstractController
 {
     #[Route(name: 'index')]
@@ -42,7 +43,7 @@ class AnimalController extends AbstractController
             'form' => $form
         ]);
     }
-    #[Route('/edit', name: 'edit')]
+    #[Route('/{id}', name: 'edit', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
     public function edit(Request $request, Animal $animal, EntityManagerInterface $em)
     {
         $form = $this->createForm(AnimalType::class, $animal);
@@ -56,5 +57,13 @@ class AnimalController extends AbstractController
             'animal' => $animal,
             'form' => $form,
         ]);
+    }
+    #[Route('/{id}', name: 'delete', methods: ['DELETE'],requirements: ['id' => Requirement::DIGITS])]
+    public function delete(Request $request, Animal $animal, EntityManagerInterface $em)
+    {
+        $em->remove($animal);
+        $em->flush();
+        $this->addFlash('success', 'Votre animal est bien supprimer');
+        return $this->redirectToRoute('admin.animal.index');
     }
 }
