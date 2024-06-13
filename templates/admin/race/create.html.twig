@@ -1,0 +1,10 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Admin - Creation d'une race{% endblock %}
+
+{% block body %}
+    <h1>Creation d'une race</h1>
+    {{ form(form) }}
+    <a class="btn btn-danger btn-sm" href="{{ path('admin.race.index')}}">Retour</a>
+
+{% endblock %}
