@@ -1,7 +1,34 @@
-{% extends 'admin.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
 {% block title %}Admin - Les Races{% endblock %}
 
 {% block body %}
-<h1>Les Races</h1>
+    <h1>Les Races</h1>
+    <p>
+        <a class="btn btn-dark" href="{{ path('admin.race.create') }}">Ajouter un habitat</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Nom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for race in races %}
+            <tr>
+                <td>{{race.label}}</td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.race.edit', {id: race.id})}}">Editer</a>
+                        <form action="{{ path('admin.race.delete', {id: race.id})}}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
