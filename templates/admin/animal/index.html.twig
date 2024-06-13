@@ -1,0 +1,10 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Admin - Les Animaux{% endblock %}
+
+{% block body %}
+<h1>Les Animaux</h1>
+    <p>
+        <a class="btn btn-dark" href="{{ path('admin.animal.create') }}">Ajouter un animal</a>
+    </p>
+{% endblock %}
