@@ -16,9 +16,12 @@
 <body>
 <nav class="navbar bg-body-tertiary navbar-expand-lg p-4" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('home') }}" >ARCADIA</a>
+        <a class="navbar-brand" href="{{ path('admin.index') }}" >Administration du Zoo</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ path('home') }}" class="nav-link ">Accueil</a>
+                </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">Les Services</a>
                 </li>
@@ -26,12 +29,12 @@
                     <a href="" class="nav-link">Les Habitats</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('contact') }}" class="nav-link {{ app.current_route == 'contact' ? 'active' : '' }}">Contact</a>
+                    <a href="" class="nav-link "></a>
                 </li>
             </ul>
         </div>
     </div>
-    <button type="button" class="btn btn-outline-light">Connection</button>
+    <a class="btn btn-outline-danger" href="{{ path('home') }}" role="button">Deconnexion</a>
 </nav>
 <div class="container my-4">
     {% include 'partials/flash.html.twig' %}
