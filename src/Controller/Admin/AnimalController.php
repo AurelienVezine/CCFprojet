@@ -19,8 +19,9 @@ class AnimalController extends AbstractController
     #[Route(name: 'index')]
     public function index(AnimalRepository $animalRepository)
     {
+        $animals = $animalRepository->findAll();
         return $this->render('admin/animal/index.html.twig', [
-            'animals' => $animalRepository->findAll(),
+            'animals' => $animals,
         ]);
     }
 
@@ -40,8 +41,20 @@ class AnimalController extends AbstractController
         return $this->render('admin/animal/create.html.twig', [
             'form' => $form
         ]);
-
-
     }
-
+    #[Route('/edit', name: 'edit')]
+    public function edit(Request $request, Animal $animal, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(AnimalType::class, $animal);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+            $this->addFlash('success', 'Votre animal est bien modifier');
+            return $this->redirectToRoute('admin.animal.index');
+        }
+        return $this->render('admin/animal/edit.html.twig', [
+            'animal' => $animal,
+            'form' => $form,
+        ]);
+    }
 }

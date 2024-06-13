@@ -7,4 +7,42 @@
     <p>
         <a class="btn btn-dark" href="{{ path('admin.animal.create') }}">Ajouter un animal</a>
     </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Prénom</th>
+            <th> Race </th>
+            <th> Habitat </th>
+            <th> Etat </th>
+            <th> Rapport(nb) </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td>
+                    {{animal.prenom}}
+                </td>
+                <td>
+                    {{animal.race}}
+                </td>
+                <td>
+                    {{animal.habitat}}
+                </td>
+                <td>
+                    {{animal.etat}}
+                </td>
+                <td>
+                    {{animal.rapports}}
+                </td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.animal.edit', {id: recette.id})}}">Editer</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
