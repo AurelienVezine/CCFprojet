@@ -30,7 +30,7 @@ class AnimalController extends AbstractController
     #[Route('/create', name: 'create')]
     public function create(Request $request, EntityManagerInterface $em)
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $animal = new Animal();
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
