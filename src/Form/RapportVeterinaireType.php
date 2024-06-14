@@ -7,6 +7,7 @@ use App\Entity\RapportVeterinaire;
 use App\Entity\Users;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,13 +22,15 @@ class RapportVeterinaireType extends AbstractType
             ->add('detail')
             ->add('animal', EntityType::class, [
                 'class' => Animal::class,
-                'choice_label' => 'id',
+                'choice_label' => 'prenom',
             ])
             ->add('user', EntityType::class, [
                 'class' => Users::class,
                 'choice_label' => 'id',
             ])
-        ;
+            ->add('save', SubmitType::class, [
+                'label' => 'Enregistrer',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

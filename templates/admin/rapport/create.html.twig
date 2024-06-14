@@ -1,0 +1,10 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Admin - Creation d'un rapport{% endblock %}
+
+{% block body %}
+    <h1>Creation d'un rapport</h1>
+    {{ form(form) }}
+    <a class="btn btn-danger btn-sm" href="{{ path('admin.rapport.index')}}">Retour</a>
+
+{% endblock %}
