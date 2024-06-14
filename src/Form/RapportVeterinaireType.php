@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Animal;
 use App\Entity\RapportVeterinaire;
+use App\Entity\User;
 use App\Entity\Users;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -25,8 +26,8 @@ class RapportVeterinaireType extends AbstractType
                 'choice_label' => 'prenom',
             ])
             ->add('user', EntityType::class, [
-                'class' => Users::class,
-                'choice_label' => 'id',
+                'class' => User::class,
+                'choice_label' => 'nom'
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Enregistrer',

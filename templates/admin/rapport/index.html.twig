@@ -19,8 +19,9 @@
         <tbody>
         {% for rapport in rapports %}
             <tr>
-                <td>{{rapport.id}}</td>
+                <td>{{ rapport.id}}</td>
                 <td>{{rapport.detail}}</td>
+                <td>{{ rapport.date |format_datetime('short', 'none') }}</td>
                 <td></td>
 
                 <td>

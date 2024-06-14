@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Services;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,6 +15,9 @@ class ServiceType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
+            ->add('save', SubmitType::class, [
+                'label' => 'Enregistrer',
+            ]);
         ;
     }
 

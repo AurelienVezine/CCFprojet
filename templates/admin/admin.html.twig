@@ -30,6 +30,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('admin.rapport.index') }}" class="nav-link {{ app.current_route starts with 'admin.rapport.' ? 'active' : '' }}" class="nav-link ">Les Rapports</a>
+                </li><li class="nav-item">
+                    <a href="{{ path('admin.service.index') }}" class="nav-link {{ app.current_route starts with 'admin.service.' ? 'active' : '' }}" class="nav-link ">Les Services</a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link "></a>
@@ -45,7 +47,7 @@
 <div class="container my-4">
     {% include 'partials/flash.html.twig' %}
     {% block body %}
-        <h1>Bienvenu Mr(Nom Utilistateur connecter)</h1>
+        <h1>Bienvenu {{ app.user.prenom ~' '~ app.user.nom }}</h1>
     {% endblock %}
 </div>
 </body>

@@ -1,7 +1,36 @@
-{% extends 'admin.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
 {% block title %}Admin - Les Services{% endblock %}
 
 {% block body %}
-<h1>Les Services</h1>
+    <h1>Les Services</h1>
+    <p>
+        <a class="btn btn-dark" href="{{ path('admin.service.create') }}">Crée un service</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Nom</th>
+            <th> Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{service.nom}}</td>
+                <td>{{service.description}}</td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.service.edit', {id: service.id})}}">Editer</a>
+                        <form action="{{ path('admin.service.delete', {id: service.id})}}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Admin - Edition d'un service{% endblock %}
+
+{% block body %}
+    <h1>Editer le service</h1>
+    {{ form(form) }}
+    <a class="btn btn-danger btn-sm" href="{{ path('admin.service.index')}}">Retour</a>
+{% endblock %}
