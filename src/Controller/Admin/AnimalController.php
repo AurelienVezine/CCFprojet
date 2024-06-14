@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 use App\Entity\Animal;
 use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
+use App\Repository\RaceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,9 @@ class AnimalController extends AbstractController
         $animals = $animalRepository->findAll();
         return $this->render('admin/animal/index.html.twig', [
             'animals' => $animals,
+            //dd($animals)
         ]);
+
     }
 
 

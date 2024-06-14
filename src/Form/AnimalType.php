@@ -7,6 +7,7 @@ use App\Entity\Habitat;
 use App\Entity\Race;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,16 @@ class AnimalType extends AbstractType
     {
         $builder
             ->add('prenom')
-            ->add('etat')
+            ->add('etat', ChoiceType::class, [
+                'choices' => [
+                    'Trés malade' => 'Trés malade',
+                    'Malade' => 'Malade',
+                    'En guerison' => 'En guerison',
+                    'Bien' => 'Bien',
+                    'Trés bien' => 'Trés bien',
+                    'En super forme' => 'En super forme',
+                    ]
+            ])
             ->add('race', EntityType::class, [
                 'class' => Race::class,
                 'choice_label' => 'label',
