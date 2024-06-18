@@ -42,9 +42,9 @@ class RapportController extends AbstractController
     }
 
     #[Route('/{id}', name: 'edit', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
-    public function edit(RapportVeterinaireRepository $rapportVeterinaireRepository, Request $request, EntityManagerInterface $em)
+    public function edit(RapportVeterinaire $rapportVeterinaire, Request $request, EntityManagerInterface $em)
     {
-        $form = $this->createForm(RapportVeterinaireType::class, $rapportVeterinaireRepository);
+        $form = $this->createForm(RapportVeterinaireType::class, $rapportVeterinaire);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
@@ -52,15 +52,15 @@ class RapportController extends AbstractController
             return $this->redirectToRoute('admin.rapport.index');
         }
         return $this->render('admin/rapport/edit.html.twig', [
-            'rapports' => $rapportVeterinaireRepository,
+            'rapports' => $rapportVeterinaire,
             'form' => $form,
         ]);
     }
 
     #[Route('/{id}', name: 'delete', methods: ['DELETE'],requirements: ['id' => Requirement::DIGITS])]
-    public function delete(RapportVeterinaireRepository $rapportVeterinaireRepository, Request $request, EntityManagerInterface $em)
+    public function delete(RapportVeterinaire $rapportVeterinaire, Request $request, EntityManagerInterface $em)
     {
-        $em->remove($rapportVeterinaireRepository);
+        $em->remove($rapportVeterinaire);
         $em->flush();
         $this->addFlash('success', 'Votre rapport est bien supprimer');
         return $this->redirectToRoute('admin.rapport.index');

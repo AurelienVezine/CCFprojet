@@ -22,8 +22,8 @@
         {% for animal in animals %}
             <tr>
                 <td>{{animal.prenom}}</td>
-                <td>problem</td>
-                <td>Probléme habitat</td>
+                <td>{{ animal.race.label }}</td>
+                <td>{{ animal.habitat.nom }}</td>
                 <td>{{ animal.etat }}</td>
                 <td>Probléme rapport</td>
                 <td>
