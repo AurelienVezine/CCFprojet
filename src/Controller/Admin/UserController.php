@@ -42,9 +42,9 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'edit', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
-    public function edit(UserRepository $userRepository, Request $request, EntityManagerInterface $em)
+    public function edit(User $user, Request $request, EntityManagerInterface $em)
     {
-        $form = $this->createForm(UserType::class, $userRepository);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
@@ -52,15 +52,15 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin.user.index');
         }
         return $this->render('admin/user/edit.html.twig', [
-            'users' => $userRepository,
+            'users' => $user,
             'form' => $form,
         ]);
     }
 
     #[Route('/{id}', name: 'delete', methods: ['DELETE'],requirements: ['id' => Requirement::DIGITS])]
-    public function delete(UserRepository $userRepository, Request $request, EntityManagerInterface $em)
+    public function delete(User $user, Request $request, EntityManagerInterface $em)
     {
-        $em->remove($userRepository);
+        $em->remove($user);
         $em->flush();
         $this->addFlash('success', 'Votre utilisateur est bien supprimer');
         return $this->redirectToRoute('admin.user.index');

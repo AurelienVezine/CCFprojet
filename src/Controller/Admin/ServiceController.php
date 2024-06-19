@@ -42,9 +42,9 @@ class ServiceController extends AbstractController
     }
 
     #[Route('/{id}', name: 'edit', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
-    public function edit(ServicesRepository $servicesRepository, Request $request, EntityManagerInterface $em)
+    public function edit(Services $services, Request $request, EntityManagerInterface $em)
     {
-        $form = $this->createForm(ServiceType::class, $servicesRepository);
+        $form = $this->createForm(ServiceType::class, $services);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
@@ -52,15 +52,15 @@ class ServiceController extends AbstractController
             return $this->redirectToRoute('admin.service.index');
         }
         return $this->render('admin/service/edit.html.twig', [
-            'services' => $servicesRepository,
+            'services' => $services,
             'form' => $form,
         ]);
     }
 
     #[Route('/{id}', name: 'delete', methods: ['DELETE'],requirements: ['id' => Requirement::DIGITS])]
-    public function delete(ServicesRepository $servicesRepository, Request $request, EntityManagerInterface $em)
+    public function delete(Services $services, Request $request, EntityManagerInterface $em)
     {
-        $em->remove($servicesRepository);
+        $em->remove($services);
         $em->flush();
         $this->addFlash('success', 'Votre service est bien supprimer');
         return $this->redirectToRoute('admin.service.index');

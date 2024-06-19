@@ -12,7 +12,6 @@
         <tr>
             <th> Nom</th>
             <th> Description</th>
-            <th> Avis </th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -20,8 +19,7 @@
         {% for habitat in habitats %}
             <tr>
                 <td>{{habitat.nom}}</td>
-                <td></td>
-                <td></td>
+                <td>{{habitat.description}}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.habitat.edit', {id: habitat.id})}}">Editer</a>
