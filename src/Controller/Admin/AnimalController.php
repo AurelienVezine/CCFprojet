@@ -24,7 +24,6 @@ class AnimalController extends AbstractController
         $animals = $animalRepository->findAll();
         return $this->render('admin/animal/index.html.twig', [
             'animals' => $animals,
-            //dd($animals)
         ]);
 
     }
