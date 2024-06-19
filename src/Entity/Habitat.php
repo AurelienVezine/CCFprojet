@@ -21,14 +21,22 @@ class Habitat
     #[ORM\Column(length: 50)]
     private ?string $description = null;
 
+
     #[ORM\Column(length: 50, nullable: true)]
-    private ?string $commentaire_habitat = null;
+    private ?string $commentaire = null;
 
     /**
      * @var Collection<int, Animal>
      */
     #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat')]
     private Collection $animals;
+
+    #[ORM\Column(length: 50)]
+    private ?string $etat = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $CreatedAt = null;
+
 
     public function __construct()
     {
@@ -64,14 +72,14 @@ class Habitat
         return $this;
     }
 
-    public function getCommentaireHabitat(): ?string
+    public function getCommentaire(): ?string
     {
-        return $this->commentaire_habitat;
+        return $this->commentaire;
     }
 
-    public function setCommentaireHabitat(?string $commentaire_habitat): static
+    public function setCommentaire(?string $commentaire): static
     {
-        $this->commentaire_habitat = $commentaire_habitat;
+        $this->commentaire = $commentaire;
 
         return $this;
     }
@@ -105,4 +113,29 @@ class Habitat
 
         return $this;
     }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(string $etat): static
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $CreatedAt): static
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
 }

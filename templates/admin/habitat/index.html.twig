@@ -10,9 +10,12 @@
     <table class="table">
         <thead>
         <tr>
-            <th> Nom</th>
-            <th> Description</th>
-            <th>Actions</th>
+            <th> Nom:</th>
+            <th> Description:</th>
+            <th> Etat:</th>
+            <th> Commentaire:</th>
+            <th> Mise à jour le:</th>
+            <th>Actions:</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +23,9 @@
             <tr>
                 <td>{{habitat.nom}}</td>
                 <td>{{habitat.description}}</td>
+                <td>{{habitat.etat}}</td>
+                <td>{{habitat.commentaire}}</td>
+                <td>{{ habitat.CreatedAt |format_datetime('short', 'none') }}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.habitat.edit', {id: habitat.id})}}">Editer</a>
