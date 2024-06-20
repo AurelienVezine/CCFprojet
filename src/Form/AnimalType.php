@@ -8,12 +8,11 @@ use App\Entity\Race;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Image;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AnimalType extends AbstractType
 {
@@ -22,11 +21,8 @@ class AnimalType extends AbstractType
         $builder
             ->add('prenom')
             ->add('description', TextareaType::class)
-            ->add('thumbnailFile', FileType::class,[
-                'mapped' => false,
-                'constraints' => [
-                    new Image()
-                ]
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
             ])
             ->add('etat', ChoiceType::class, [
                 'choices' => [
@@ -45,6 +41,10 @@ class AnimalType extends AbstractType
             ->add('habitat', EntityType::class, [
                 'class' => Habitat::class,
                 'choice_label' => 'nom',
+            ])
+            ->add('updatedAt', null, [
+                'widget' => 'single_text',
+                'label'=> 'Mis à jour le:',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Enregistrer',
