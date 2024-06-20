@@ -6,6 +6,7 @@ use App\Entity\Habitat;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +16,8 @@ class HabitatType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description')
-            ->add('commentaire')
+            ->add('description', TextareaType::class)
+            ->add('commentaire',)
             ->add('etat', ChoiceType::class, [
                 'choices' => [
                     'En super mauvais état' => 'En super mauvais état',

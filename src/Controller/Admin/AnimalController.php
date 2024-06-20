@@ -9,6 +9,7 @@ use App\Repository\AnimalRepository;
 use App\Repository\RaceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -52,6 +53,11 @@ class AnimalController extends AbstractController
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var  UploadedFile $file */
+            $file = $form->get('thumbnailFile')->getData();
+            $filename = $animal->getId() . '.' . $file->getClientOriginalExtension();
+            $file ->move('???',$filename);
+            $animal->setThumbnail($filename);
             $em->flush();
             $this->addFlash('success', 'Votre animal est bien modifier');
             return $this->redirectToRoute('admin.animal.index');
