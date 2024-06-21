@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServicesController!{% endblock %}
+
+{% block body %}
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">Les Services de ARCADIA</h1>
+    </div>
+    <div class="container my-5">
+        <div class="bg-body-tertiary p-5 rounded">
+            {% for service in services %}
+                <div class="background-image"><img class="bd-img" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(service, 'imageFile') }}" alt="">
+                    <div class="col-sm-8 py-5 mx-auto">
+                     <h1 class="display-5 fw-normal">Navbar with offcanvas examples</h1>
+                        <p class="fs-5">{{ service.description | nl2br}}<p>
+                        <a class="btn btn-primary" href="/docs/5.3/components/navbar/#offcanvas" role="button">Learn more about offcanvas navbars &raquo;</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

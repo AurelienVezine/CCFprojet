@@ -13,6 +13,7 @@
             <th> Nom</th>
             <th> Description</th>
             <th>Actions</th>
+            <th>Mise à jour le:</th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{service.nom}}</td>
                 <td>{{service.description}}</td>
+                <td>{{ service.CreatedAt |format_datetime('short', 'none') }}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.service.edit', {id: service.id})}}">Editer</a>
