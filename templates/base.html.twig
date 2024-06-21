@@ -45,7 +45,7 @@
             <a class="link-light link-underline-opacity-0" href="" ><i class="fa-solid fa-compass p-2"></i>Les Services</a>
             <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'animaux.' ? 'active' : '' }}" href="{{ path('animaux.index') }}"><i class="fa-solid fa-paw p-2"></i>Les Animaux</a>
             <a class="navbar-brand" href="{{ path('home') }}"><h3>ARCADIA</h3></a>
-            <a class="link-light link-underline-opacity-0" href="" ><i class="fa-solid fa-earth-europe p-2"></i>Les Habitats</a>
+            <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'habitats.' ? 'active' : '' }}" href="{{ path('habitats.index') }}" ><i class="fa-solid fa-earth-europe p-2"></i>Les Habitats</a>
             <a class="link-light link-underline-opacity-0{{ app.current_route == 'contact' ? 'active' : '' }}" href="{{ path('contact') }}"><i class="fa-solid fa-envelope p-2"></i>Contact</a>
             <a class="btn btn-outline-light " href="{{ path('admin.index') }}" role="button"><i class="fa-solid fa-user p-2"></i>Login</a>
         </div>
