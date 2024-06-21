@@ -12,7 +12,7 @@
         <div class="row">
     {% for animal in animals %}
         <div class="col-lg-3 p-2">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <div><img class="bd-placeholder-img rounded-circle" width="150" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(animal, 'imageFile') }}" alt=""></div>
                 <h2 class="fw-normal"><i class="fa-solid fa-paw p-2"></i>{{ animal.prenom }}</h2>
                 <h6><i class="fa-solid fa-dna p-1"></i>Breed -> {{animal.race.label}}</h6>
                 <h6><i class="fa-solid fa-earth-europe p-1"></i>Habitat : {{ animal.habitat.nom }}</h6>
