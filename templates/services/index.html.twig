@@ -1,22 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServicesController!{% endblock %}
+{% block title %}Les Habitats{% endblock %}
 
-{% block body %}
+{% block main %}
+    <div class="container mt-4">
+
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
         <h1 class="display-4 fw-normal text-body-emphasis">Les Services de ARCADIA</h1>
     </div>
-    <div class="container my-5">
-        <div class="bg-body-tertiary p-5 rounded">
-            {% for service in services %}
-                <div class="background-image"><img class="bd-img" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(service, 'imageFile') }}" alt="">
-                    <div class="col-sm-8 py-5 mx-auto">
-                     <h1 class="display-5 fw-normal">Navbar with offcanvas examples</h1>
-                        <p class="fs-5">{{ service.description | nl2br}}<p>
-                        <a class="btn btn-primary" href="/docs/5.3/components/navbar/#offcanvas" role="button">Learn more about offcanvas navbars &raquo;</a>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for service in services %}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div><img class="bd-placeholder-img card-img-top" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(service, 'imageFile') }}" alt=""></div>
+                            <div class="card-body">
+                                <p class="card-text">{{ service.description | nl2br}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View details</button>
+                                    </div>
+                                    <small class="text-body-secondary">Mise à jour le: {{ service.CreatedAt |format_datetime('short', 'none') }}</small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
+    </div>
     </div>
 {% endblock %}

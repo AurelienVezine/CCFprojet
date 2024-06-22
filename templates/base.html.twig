@@ -5,56 +5,32 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <link href="sign-in.css" rel="stylesheet">
+
         {% block stylesheets %}
         {% endblock %}
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
         <script src="https://kit.fontawesome.com/4606bac4f1.js" crossorigin="anonymous"></script>
-
-
     </head>
-    <body>
-    <!--<nav class="navbar bg-body-tertiary navbar-expand-lg p-2" data-bs-theme="dark">
-        <div class="container-fluid ">
-            <div class="collapse navbar-collapse justify-content-evenly">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Les Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('animaux.index') }}" class="nav-link {{ app.current_route starts with 'animaux.' ? 'active' : '' }}">Les Animaux</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-brand" href="{{ path('home') }}">ARCADIA</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Les Habitats</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('contact') }}" class="nav-link {{ app.current_route == 'contact' ? 'active' : '' }}">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <a class="btn btn-outline-light m-2" href="{{ path('admin.index') }}" role="button">Connexion</a>
-    </nav> -->
-    <nav class="navbar bg-body-tertiary" data-bs-theme="dark" >
-        <div class="container-fluid d-flex justify-content-evenly" >
-            <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'services.' ? 'active' : '' }}" href="{{ path('services.index') }}"><i class="fa-solid fa-compass p-2"></i>Les Services</a>
-            <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'animaux.' ? 'active' : '' }}" href="{{ path('animaux.index') }}"><i class="fa-solid fa-paw p-2"></i>Les Animaux</a>
-            <a class="navbar-brand" href="{{ path('home') }}"><h3>ARCADIA</h3></a>
-            <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'habitats.' ? 'active' : '' }}" href="{{ path('habitats.index') }}" ><i class="fa-solid fa-earth-europe p-2"></i>Les Habitats</a>
-            <a class="link-light link-underline-opacity-0{{ app.current_route == 'contact' ? 'active' : '' }}" href="{{ path('contact') }}"><i class="fa-solid fa-envelope p-2"></i>Contact</a>
-            <a class="btn btn-outline-light " href="{{ path('admin.index') }}" role="button"><i class="fa-solid fa-user p-2"></i>Login</a>
-        </div>
-    </nav>
+    <body class="m-0 p-0" style=" display: flex; flex-direction: column">
+    {% block body %}
+        <header>
+        {% include "partials/_header.html.twig" %}
+        </header>
 
-    <div class="container my-4">
-        {% include 'partials/flash.html.twig' %}
-        {% block body %}{% endblock %}
-    </div>
+        <main class="container-flex" style="background-color: chartreuse">
+            {% block main %}
+            {% include 'partials/flash.html.twig' %}
+
+            {% endblock %}
+        </main>
+
+        <footer>
+        {% include "partials/_footer.html.twig" %}
+        </footer>
+    {% endblock %}
     </body>
 </html>
