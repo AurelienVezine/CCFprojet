@@ -53,7 +53,7 @@
 <div class="container my-4">
     {% include 'partials/flash.html.twig' %}
     {% block body %}
-        <h1>Bienvenu {{ app.user.prenom ~' '~ app.user.nom }}</h1>
+        <h1>Bienvenu {{ app.user.firstname ~' '~ app.user.lastname }}</h1>
     {% endblock %}
 </div>
 </body>

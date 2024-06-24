@@ -24,8 +24,7 @@ class RapportVeterinaire
     #[ORM\JoinColumn(nullable: false)]
     private ?Animal $animal = null;
 
-    #[ORM\ManyToOne(inversedBy: 'rapportVeterinaires')]
-    private ?User $user = null;
+
 
     #[ORM\Column(length: 50)]
     private ?string $foodoffered = null;
@@ -35,6 +34,9 @@ class RapportVeterinaire
 
     #[ORM\Column(length: 50)]
     private ?string $conditiondetails = null;
+
+    #[ORM\ManyToOne(inversedBy: 'rapportVeterinaires')]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -77,18 +79,6 @@ class RapportVeterinaire
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     public function getFoodoffered(): ?string
     {
         return $this->foodoffered;
@@ -121,6 +111,18 @@ class RapportVeterinaire
     public function setConditiondetails(string $conditiondetails): static
     {
         $this->conditiondetails = $conditiondetails;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

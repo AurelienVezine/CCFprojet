@@ -19,9 +19,9 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{user.nom}}</td>
-                <td>{{user.prenom}}</td>
-                <td>{{user.username}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.email}}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.user.edit', {id: user.id})}}">Editer</a>
