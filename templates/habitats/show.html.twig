@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ habitats.nom }}{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center border-bottom pb-4 mb-3">{{ habitats.nom }}</h1>
+            {% for habitat in habitats %}
+                <p>{{ habitat.animals.prenom }}</p>
+            {% endfor %}
+            <h6>Description:</h6>
+            <p class="card-text">{{ habitats.description }}</p>
+        </div>
+        <img src="{{ vich_uploader_asset(habitats, 'imageFile') }}" class="card-img-bottom" alt="...">
+    </div>
+
+
+{% endblock %}

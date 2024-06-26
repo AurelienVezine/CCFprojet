@@ -15,10 +15,11 @@
                 <div class="card shadow-sm">
                     <div><img class="bd-placeholder-img card-img-top" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(habitat, 'imageFile') }}" alt=""></div>
                     <div class="card-body">
+                        <h3>{{ habitat.nom }}</h3>
                         <p class="card-text">{{ habitat.description | nl2br}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View details</button>
+                                <a class="btn btn-sm btn-outline-secondary" href="{{ path('habitats.show', {id: habitat.id, nom: habitat.nom})}}">View details</a>
                             </div>
                             <small class="text-body-secondary">Mise à jour le: {{ habitat.CreatedAt |format_datetime('short', 'none') }}</small>
                         </div>

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ animals.prenom }}{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center border-bottom pb-4 mb-3">{{ animals.prenom }}</h1>
+            <h6>Breed:</h6>
+            <p>{{ animals.race.label }}</p>
+            <h6>Description:</h6>
+            <p class="card-text">{{ animals.description }}</p>
+            <h6>Habitat:</h6>
+            <p>{{ animals.habitat.nom }} -> <a href="">Allez voir</a></p>
+            <h6>Santé de l'animal:</h6>
+            <p>{{ animals.etat }}</p>
+        </div>
+        <img src="{{ vich_uploader_asset(animals, 'imageFile') }}" class="card-img-bottom" alt="...">
+    </div>
+
+{% endblock %}
+

@@ -25,6 +25,7 @@ class AnimalController extends AbstractController
             'animals' => $animals,
         ]);
 
+
     }
 
 

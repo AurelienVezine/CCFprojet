@@ -21,7 +21,7 @@ class Habitat
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 1500)]
     private ?string $description = null;
 
     #[Vich\UploadableField(mapping: 'habitats', fileNameProperty: 'imageName')]

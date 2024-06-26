@@ -17,7 +17,7 @@
                 <h6><i class="fa-solid fa-dna p-1"></i>Breed -> {{animal.race.label}}</h6>
                 <h6><i class="fa-solid fa-earth-europe p-1"></i>Habitat : {{ animal.habitat.nom }}</h6>
                 <p>{{ animal.description | nl2br}}</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{{ path('animaux.show', {id: animal.id, prenom: animal.prenom})}}">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     {% endfor %}
         </div>
