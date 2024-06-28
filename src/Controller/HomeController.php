@@ -2,19 +2,37 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+
+
+use App\Entity\Avis;
+use App\Form\AvisType;
+use App\Repository\AvisRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(): Response
+    public function index(Request $request, AvisRepository $avisRepository, EntityManagerInterface $em): Response
     {
-        return $this->render('home/index.html.twig');
+        $avis = new Avis();
+        $form = $this->createForm(AvisType::class, $avis);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($avis);
+            $em->flush();
+            $this->addFlash('success', 'Votre avis est bien prise en compte !');
+            return $this->redirectToRoute('home');
+        }
+
+        $avis = $avisRepository->findAll();
+        return $this->render('home/index.html.twig', [
+            'avis' => $avis,
+            'form' => $form,
+        ]);
 
     }
 }

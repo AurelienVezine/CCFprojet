@@ -22,10 +22,14 @@
         </header>
 
         {% include 'partials/_carrousel.html.twig' %}
+        <div class="container">
+            {% include 'partials/flash.html.twig' %}
+        </div>
 
         <main class="container">
             {% block main %}
-            {% include 'partials/flash.html.twig' %}
+
+
 
             {% endblock %}
         </main>

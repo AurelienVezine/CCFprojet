@@ -1,0 +1,11 @@
+<div class="container">
+    {{ form(form) }}
+    <div class="container">
+        {% for avi in avis %}
+            {% if avi.isVisible == true %}
+                <h3>{{ avi.pseudo }}</h3>
+                <p>{{ avi.comments }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
