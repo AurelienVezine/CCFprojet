@@ -1,11 +1,18 @@
-<div class="container">
-    {{ form(form) }}
-    <div class="container">
+<h2 class="text-center border-bottom mb-5 p-1">Avis des visiteurs du Zoo</h2>
+<div class="container mb-5">
         {% for avi in avis %}
+            <div class="container border rounded-top mb-2">
             {% if avi.isVisible == true %}
-                <h3>{{ avi.pseudo }}</h3>
+                <div class="d-flex justify-content-between border-bottom mb-2 pt-1">
+                    <h3>{{ avi.pseudo | title}}</h3>
+                    <small class="text-body-secondary">Deposé le : {{ avi.CreatedAt |format_datetime('full', 'none', locale='fr') }}</small>
+                </div>
                 <p>{{ avi.comments }}</p>
             {% endif %}
+            </div>
         {% endfor %}
-    </div>
-</div>
+ </div>
+    <h3>Vos avis compte pour nous: </h3>
+ <div class="container border border-1 border-dark rounded ">
+     {{ form(form) }}
+ </div>
