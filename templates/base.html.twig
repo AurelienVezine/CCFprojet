@@ -15,18 +15,18 @@
         {% endblock %}
         <script src="https://kit.fontawesome.com/4606bac4f1.js" crossorigin="anonymous"></script>
     </head>
-    <body class="m-0 p-0" style=" display: flex; flex-direction: column">
+    <body class="m-0 p-0 " style=" display: flex; flex-direction: column; background-image: url('/images/backgrounds/fondbody2.jpg'); background-repeat: no-repeat; background-size: cover; width: 100%;">
     {% block body %}
         <header>
         {% include "partials/_header.html.twig" %}
         </header>
-
+        
         {% include 'partials/_carrousel.html.twig' %}
         <div class="container">
             {% include 'partials/flash.html.twig' %}
         </div>
 
-        <main class="container">
+        <main class="container p-4 my-4 rounded-4" style="background: #FFFFFF">
             {% block main %}
 
 

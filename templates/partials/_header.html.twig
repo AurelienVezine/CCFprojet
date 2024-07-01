@@ -1,6 +1,7 @@
 <header>
-         <nav class="navbar bg-body-tertiary " data-bs-theme="dark" >
-            <div class="container-fluid d-flex justify-content-evenly" >
+         <nav class="navbar "  data-bs-theme="dark">
+            <div class="container-fluid d-flex justify-content-around" >
+                    <a href=""></a>
                     <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'services.' ? 'active' : '' }}" href="{{ path('services.index') }}"><i class="fa-solid fa-compass p-2"></i>Les Services</a>
                     <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'animaux.' ? 'active' : '' }}" href="{{ path('animaux.index') }}"><i class="fa-solid fa-paw p-2"></i>Les Animaux</a>
                     <a class="navbar-brand" href="{{ path('home') }}"><h3>ARCADIA</h3></a>

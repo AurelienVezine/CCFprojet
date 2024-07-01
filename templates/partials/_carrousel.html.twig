@@ -4,39 +4,51 @@
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <img class="bd-placeholder-img" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src="{{ absolute_url('images/images/banniere-visite.jpg') }}" alt="">
             <div class="container p-2">
                 <div class="carousel-caption text-start">
-                    <h5>Les Services</h5>
-                    <p class="opacity-75">Vous pouvez consulter nos services en cliquant sur l'onglet ou en cliquant sur le bouton dessou.</p>
-                    <p><a class="btn btn-sm btn-primary" href="{{ path('services.index') }}">Les Service</a></p>
+                    <h5>Les Visites</h5>
+                    <p>Vous pouvez visité le parc en train ou avec un accompagnant</p>
+                    <p><a class="btn btn-sm btn-dark" href="{{ path('services.index') }}">Les Service</a></p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <img class="bd-placeholder-img" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src="{{ absolute_url('images/images/banniere.jpg') }}" alt="">
             <div class="container p-2">
                 <div class="carousel-caption p-3">
                     <h4>Les Animaux</h4>
                     <p>Venez jetez un oeil a nos animaux pour les connaitre un peu mieux avant votre visite </p>
-                    <p><a class="btn btn-sm btn-primary" href="{{ path('animaux.index') }}">Les Animaux</a></p>
+                    <p><a class="btn btn-sm btn-dark" href="{{ path('animaux.index') }}">Les Animaux</a></p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <img class="bd-placeholder-img" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src="{{ absolute_url('images/images/banniere-habitats.jpg') }}" alt="">
             <div class="container p-2">
                 <div class="carousel-caption text-end">
                     <h4>Les Habitas</h4>
                     <p>Informez vous sur les differents habitats de nos amis animaux pour savoir d'ou ils viennent</p>
-                    <p><a class="btn btn-sm btn-primary" href="{{ path('habitats.index') }}">Les Habitats</a></p>
+                    <p><a class="btn btn-sm btn-dark" href="{{ path('habitats.index') }}">Les Habitats</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="bd-placeholder-img" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" src="{{ absolute_url('images/images/banniere-restaurant.jpg') }}" alt="">
+            <div class="container p-2" >
+                <div class="carousel-caption text-end ">
+                    <h5>Restauration</h5>
+                    <p>Restauration sur place possible venez jeter un coup d'oeil</p>
+                    <p><a class="btn btn-sm btn-dark" href="{{ path('services.index') }}">Les Service</a></p>
                 </div>
             </div>
         </div>
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>

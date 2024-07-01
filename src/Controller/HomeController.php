@@ -28,7 +28,8 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        $avis = $avisRepository->findAll();
+        $page = $request->query->getInt('page', 1);
+        $avis = $avisRepository->paginateAvis($page);
         return $this->render('home/index.html.twig', [
             'avis' => $avis,
             'form' => $form,

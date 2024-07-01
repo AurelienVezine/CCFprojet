@@ -2,7 +2,7 @@
 
 {% block title %}Admin - Les Animaux{% endblock %}
 
-{% block body %}
+{% block main %}
 <h1>Les Animaux</h1>
     <p>
         <a class="btn btn-dark" href="{{ path('admin.animal.create') }}">Ajouter un animal</a>
@@ -10,10 +10,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th> Prénom</th>
-            <th> Race </th>
+            <th lass="bi bi-sort-d"> {{knp_pagination_sortable(animals, 'Prenom', 'r.prenom')}}</th>
+            <th> Breed </th>
             <th> Habitat </th>
-            <th> Etat </th>
+            <th> {{knp_pagination_sortable(animals, 'Etat', 'r.etat')}}</th>
             <th> Rapport(nb) </th>
             <th>Actions</th>
         </tr>
@@ -39,4 +39,5 @@
         {% endfor %}
         </tbody>
     </table>
+    {{ knp_pagination_render(animals) }}
 {% endblock %}

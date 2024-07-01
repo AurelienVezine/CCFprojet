@@ -11,7 +11,9 @@
             {% endif %}
             </div>
         {% endfor %}
+    {{ knp_pagination_render(avis) }}
  </div>
+
     <h3>Vos avis compte pour nous: </h3>
  <div class="container border border-1 border-dark rounded ">
      {{ form(form) }}
