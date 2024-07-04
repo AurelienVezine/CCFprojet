@@ -17,7 +17,7 @@ class RapportVeterinaire
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 1000, nullable: true)]
     private ?string $detail = null;
 
     #[ORM\ManyToOne(inversedBy: 'rapports')]

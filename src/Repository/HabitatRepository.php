@@ -16,6 +16,7 @@ class HabitatRepository extends ServiceEntityRepository
         parent::__construct($registry, Habitat::class);
     }
 
+
     //    /**
     //     * @return Habitat[] Returns an array of Habitat objects
     //     */

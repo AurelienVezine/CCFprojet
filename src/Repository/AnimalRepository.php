@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Animal;
+use App\Entity\Habitat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -17,15 +18,30 @@ class AnimalRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry, private PaginatorInterface $paginator)
     {
         parent::__construct($registry, Animal::class);
+
     }
 
     public function paginateAnimals(int $page, ): PaginationInterface
     {
-    return $this->paginator->paginate(
-        $this->createQueryBuilder('r'),
-        $page,
-        20
-    );
+        return $this->paginator->paginate(
+            $this->createQueryBuilder('r'),
+            $page,
+            4
+        );
+    }
+
+    public function findByHabitat(int $page, Habitat $habitat): PaginationInterface
+    {
+        return $this->paginator->paginate(
+            $this->createQueryBuilder('a')
+                ->where('a.habitat = :habitat')
+                ->setParameter('habitat', $habitat)
+                ->getQuery(),
+            $page,
+            4
+        );
+    }
+
         /*
         return new Paginator($this
             ->createQueryBuilder('r')
@@ -35,7 +51,7 @@ class AnimalRepository extends ServiceEntityRepository
             ->setHint(Paginator::HINT_ENABLE_DISTINCT, false),
         );
         */
-    }
+
     //    /**
     //     * @return Animal[] Returns an array of Animal objects
     //     */

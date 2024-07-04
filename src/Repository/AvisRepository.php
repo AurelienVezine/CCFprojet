@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * @extends ServiceEntityRepository<Avis>
@@ -18,14 +19,21 @@ class AvisRepository extends ServiceEntityRepository
         parent::__construct($registry, Avis::class);
     }
 
-    public function paginateAvis(int $page, ): PaginationInterface
+
+
+    public function paginateAvis(int $page,): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->createQueryBuilder('r'),
+            $this->createQueryBuilder('r')
+                ->where('r.isVisible = true')
+                ->orderBy('r.createdAt', 'DESC'),
             $page,
-            4
+            10
         );
     }
+
+
+
     //    /**
     //     * @return Avis[] Returns an array of Avis objects
     //     */

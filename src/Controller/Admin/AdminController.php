@@ -38,4 +38,13 @@ class AdminController extends AbstractController
         $this->addFlash('success', 'Votre avis est bien supprimer');
         return $this->redirectToRoute('admin.index');
     }
+    #[Route('/show', name: 'admin.show')]
+    public function list(Request $request, AvisRepository $avisRepository)
+    {
+        $avis = $avisRepository->findAll();
+        return $this->render('admin/listAvis.html.twig', [
+            'avis' => $avis,
+        ]);
+    }
+
 }

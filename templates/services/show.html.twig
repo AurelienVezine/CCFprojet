@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ services.nom }}{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center border-bottom pb-4 mb-3">{{ services.nom }}</h1>
+            <h6>Description:</h6>
+            <p class="card-text">{{ services.description }}</p>
+            <h5>Horaires :</h5>
+            <p>De 9h à 18h30 sans interuptions</p>
+        </div>
+
+        <img src="{{ vich_uploader_asset(services, 'imageFile') }}" class="card-img-bottom" alt="...">
+    </div>
+{% endblock %}

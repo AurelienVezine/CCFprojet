@@ -6,13 +6,30 @@
     <div class="card">
         <div class="card-body">
             <h1 class="card-title text-center border-bottom pb-4 mb-3">{{ habitats.nom }}</h1>
-            {% for habitat in habitats %}
-                <p>{{ habitat.animals.prenom }}</p>
-            {% endfor %}
             <h6>Description:</h6>
             <p class="card-text">{{ habitats.description }}</p>
         </div>
         <img src="{{ vich_uploader_asset(habitats, 'imageFile') }}" class="card-img-bottom" alt="...">
+    </div>
+    <h2 class="text-center border-bottom mb-5 p-4">Animaux de l'habitation</h2>
+    <div class="container">
+        <div class="row justify-content-around">
+            {% for animal in animals %}
+                <div class="col-lg-2 p-2">
+                    {% if animal.habitat.nom == habitats.nom %}
+                    <div><img class="bd-placeholder-img rounded-circle" width="150" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(animal, 'imageFile') }}" alt=""></div>
+                    <h2 class="fw-normal"><i class="fa-solid fa-paw p-2"></i>{{ animal.prenom }}</h2>
+                    <h6><i class="fa-solid fa-dna p-1"></i>Breed -> {{animal.race.label}}</h6>
+                    <p class="text-truncate">{{ animal.description}}</p>
+                    <p><a class="btn btn-secondary" href="{{ path('animaux.show', {id: animal.id, prenom: animal.prenom})}}">View details &raquo;</a></p>
+                    {% endif %}
+                </div><!-- /.col-lg-4 -->
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-center p-4">
+            {{ knp_pagination_render(animals) }}
+        </div>
+
     </div>
 
 

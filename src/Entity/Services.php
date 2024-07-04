@@ -19,7 +19,7 @@ class Services
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 255)]
     private ?string $description = null;
     #[Vich\UploadableField(mapping: 'services', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;

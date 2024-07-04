@@ -40,7 +40,7 @@ class RapportVeterinaireType extends AbstractType
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'nom',
+                'choice_label' => 'lastname',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Enregistrer',

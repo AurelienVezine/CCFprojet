@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Habitats{% endblock %}
+{% block title %}Les Services{% endblock %}
 
 {% block main %}
     <div class="container mt-4">
 
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
         <h1 class="display-4 fw-normal text-body-emphasis">Les Services de ARCADIA</h1>
+        <p>Découvrez la magie de la faune au Zoo Arcadia! Parcourez nos habitats réalistes en compagnie de nos guides expérimentés,
+            ou optez pour une visite pittoresque à bord de notre petit train. Plongez au cœur de la nature sauvage.
+            Une expérience inoubliable pour tous les amoureux des animaux! Ne perdez plus de temps, seul ou en famille que vous soyez fasciné par la majesté des grands félins,
+            émerveillé par la grâce des primates ou captivé par la diversité colorée des oiseaux tropicaux, le Zoo Arcadia est un paradis pour les amoureux de la nature de tous âges.
+            Ne manquez pas nos démonstrations d'alimentation, où vous pourrez en apprendre davantage sur les habitudes alimentaires et les comportements naturels de nos résidents animaliers.</p>
     </div>
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
@@ -16,10 +21,10 @@
                         <div class="card shadow-sm">
                             <div><img class="bd-placeholder-img card-img-top" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(service, 'imageFile') }}" alt=""></div>
                             <div class="card-body">
-                                <p class="card-text">{{ service.description | nl2br}}</p>
+                                <p class="card-text">{{ service.nom}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View details</button>
+                                        <a class="btn btn-sm btn-outline-secondary" href="{{ path('services.show', {id: service.id, nom: service.nom})}}">View details</a>
                                     </div>
                                     <small class="text-body-secondary">Mise à jour le: {{ service.CreatedAt |format_datetime('short', 'none') }}</small>
                                 </div>

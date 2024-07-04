@@ -1,0 +1,37 @@
+<div class="d-flex flex-column flex-shrink-0 p-4 text-bg-dark" style="width: 280px;">
+    <a href="{{ path('admin.index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-4"><i class="bi bi-house-gear p-2"></i>Administration</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="{{ path('home') }}" class="nav-link text-white" aria-current="page"><i class="bi bi-house-door p-1"></i>Site Home</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.index') }}" class="nav-link {{ app.current_route == 'admin.index' ? 'active' : '' }} text-white"><i class="bi bi-speedometer2 p-1"></i>Dashboard</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.user.index') }}" class="nav-link {{ app.current_route starts with 'admin.user.' ? 'active' : '' }} text-white"><i class="bi bi-person-gear p-1"></i>Users</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.service.index') }}" class="nav-link {{ app.current_route starts with 'admin.service.' ? 'active' : '' }} text-white"><i class="bi bi-cone-striped p-1"></i>Services</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.animal.index') }}" class="nav-link {{ app.current_route starts with 'admin.animal.' ? 'active' : '' }} text-white"><i class="fa-solid fa-paw p-1"></i>Animals</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.habitat.index') }}" class="nav-link {{ app.current_route starts with 'admin.habitat.' ? 'active' : '' }} text-white"><i class="fa-solid fa-earth-europe p-1"></i>Habitats</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.race.index') }}" class="nav-link {{ app.current_route starts with 'admin.race.' ? 'active' : '' }} text-white"><i class="fa-solid fa-dna p-1"></i>Breed</a>
+        </li>
+        <li>
+            <a href="{{ path('admin.rapport.index') }}" class="nav-link {{ app.current_route starts with 'admin.rapport.' ? 'active' : '' }} text-white"><i class="fa-solid fa-file-waveform p-1"></i>Rapports</a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <strong>{{ app.user.firstname ~' '~ app.user.lastname }}</strong>
+        <a class="btn btn-outline-danger btn-sm p-1" href="{{ path('app_logout') }}" role="button"><i class="fa-solid fa-user p-1"></i>Disconnect</a>
+    </div>
+</div>

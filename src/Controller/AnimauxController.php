@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\AnimalRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,11 +13,13 @@ use Symfony\Component\Routing\Requirement\Requirement;
 class AnimauxController extends AbstractController
 {
     #[Route(name: 'index')]
-    public function index(AnimalRepository $animalRepository)
+    public function index(Request $request, AnimalRepository $animalRepository)
     {
-        $animals = $animalRepository->findAll();
+        $page = $request->query->getInt('page', 1);
+        $animals = $animalRepository->paginateAnimals($page);
         return $this->render('animaux/index.html.twig', [
             'animals' => $animals,
+
         ]);
 
     }

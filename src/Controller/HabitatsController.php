@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Habitat;
+use App\Repository\AnimalRepository;
 use App\Repository\HabitatRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 #[Route('/habitats', name: 'habitats.')]
@@ -19,15 +23,26 @@ class HabitatsController extends AbstractController
         ]);
 
     }
-    #[Route('/{id}-{nom}', name: 'show', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
-    public function show(Request $request, HabitatRepository $habitatRepository, int $id, string $nom)
+    #[Route('/{id}', name: 'show', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
+    public function show(Habitat $habitat, AnimalRepository $animalRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $habitats = $habitatRepository->find($id);
-        if ($habitats->getNom()!== $nom) {
-            return $this->redirectToRoute('animaux.show', ['nom' => $nom->getNom(), 'id' => $id], 301);
-        }
+        $animals = $animalRepository->findByHabitat($request->query->getInt('page', 1), $habitat);
+
+        // Vous pouvez passer l'habitat et les animaux à la vue
         return $this->render('habitats/show.html.twig', [
-            'habitats' => $habitats,
+            'habitats' => $habitat,
+            'animals' => $animals,
         ]);
     }
+    /*public function show(Request $request, HabitatRepository $habitatRepository, int $id, AnimalRepository $animal)
+    {
+       $habitats = $habitatRepository->find($id);
+        $page = $request->query->getInt('page', 1);
+        $animals = $animal->paginateAnimalsHabitat($page);
+        return $this->render('habitats/show.html.twig', [
+            'habitats' => $habitats,
+            'animals' => $animals,
+        ]);
+
+    }*/
 }

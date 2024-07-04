@@ -1,0 +1,35 @@
+{% extends 'admin/admin.html.twig' %}
+{% block title %}Admin - Les Services{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <h4>Liste des avis validés :</h4>
+        <thead>
+        <tr>
+            <th> Pseudo</th>
+            <th> Commentaire </th>
+            <th> Statu </th>
+            <th> Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for avi in avis %}
+            {% if avi.isVisible == true  %}
+                <tr>
+                    <td>{{avi.pseudo}}</td>
+                    <td>{{ avi.comments }}</td>
+                    <td>{{ avi.isVisible}}</td>
+                    <td>
+                        <div class="d-flex gap-1">
+                            <form action="{{ path('admin.delete', {id: avi.id})}}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i>Supprimer</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

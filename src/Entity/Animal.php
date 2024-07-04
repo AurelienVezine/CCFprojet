@@ -39,7 +39,7 @@ class Animal
     #[ORM\JoinColumn(nullable: false)]
     private ?Habitat $habitat = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 1500)]
     private ?string $description = null;
 
     #[Vich\UploadableField(mapping: 'animals', fileNameProperty: 'imageName')]

@@ -24,10 +24,10 @@
                 <td>{{ service.CreatedAt |format_datetime('short', 'none') }}</td>
                 <td>
                     <div class="d-flex gap-1">
-                        <a class="btn btn-primary btn-sm" href="{{ path('admin.service.edit', {id: service.id})}}">Editer</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.service.edit', {id: service.id})}}"><i class="bi bi-pen p-1"></i>Editer</a>
                         <form action="{{ path('admin.service.delete', {id: service.id})}}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i>Supprimer</button>
                         </form>
                     </div>
                 </td>
