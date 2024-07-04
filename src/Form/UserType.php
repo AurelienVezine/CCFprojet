@@ -29,7 +29,8 @@ class UserType extends AbstractType
             ])
             ->add('lastname')
             ->add('firstname')
-            ->add('submit', SubmitType::class, ['label' => 'Enregistrer'])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Enregistrer',])
         ;
     }
 

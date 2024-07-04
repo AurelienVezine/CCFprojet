@@ -36,7 +36,8 @@ class HabitatType extends AbstractType
                 'widget' => 'single_text',
                 'label'=> 'Mis à jour le:',
             ])
-            ->add('save', SubmitType::class, ['label' => 'Enregistrer'])
+            ->add('save', SubmitType::class, [
+                'label' => 'Enregistrer',])
         ;
     }
 
