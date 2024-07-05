@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Animal;
 use App\Entity\RapportVeterinaire;
 use App\Form\RapportVeterinaireType;
 use App\Repository\RapportVeterinaireRepository;
@@ -16,9 +17,10 @@ use Symfony\Component\Routing\Requirement\Requirement;
 class RapportController extends AbstractController
 {
     #[Route(name: 'index')]
-    public function index(RapportVeterinaireRepository $rapportVeterinaireRepository): Response
+    public function index(RapportVeterinaireRepository $rapportVeterinaireRepository, Request $request): Response
     {
-        $rapports = $rapportVeterinaireRepository->findAll();
+        $page = $request->query->getInt('page', 1);
+        $rapports = $rapportVeterinaireRepository->paginateRapports($page);
         return $this->render('admin/rapport/index.html.twig', [
             'rapports' => $rapports,
         ]);

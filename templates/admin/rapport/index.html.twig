@@ -10,13 +10,13 @@
     <table class="table">
         <thead>
         <tr>
-            <th> Nom:</th>
+            <th> Nom:{{knp_pagination_sortable(rapports, '', 'a.prenom')}}</th>
             <th> Detail :</th>
             <th> Foodoffered:</th>
             <th> Foodquantity:</th>
             <th> Commentaire:</th>
             <th>Créateur:</th>
-            <th> Edité le:</th>
+            <th>Edité le :{{knp_pagination_sortable(rapports, '', 'r.date')}}</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -29,7 +29,7 @@
                 <td>{{rapport.foodquantity}}</td>
                 <td>{{rapport.conditiondetails}}</td>
                 <td>{{rapport.user.firstname ~ rapport.user.lastname}}</td>
-                <td>{{ rapport.date |format_datetime('short', 'none') }}</td>
+                <td>{{ rapport.date |format_datetime('short', 'none', locale='fr') }}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.rapport.edit', {id: rapport.id})}}"><i class="bi bi-pen p-1"></i>Editer</a>

@@ -28,7 +28,6 @@ class HabitatsController extends AbstractController
     {
         $animals = $animalRepository->findByHabitat($request->query->getInt('page', 1), $habitat);
 
-        // Vous pouvez passer l'habitat et les animaux à la vue
         return $this->render('habitats/show.html.twig', [
             'habitats' => $habitat,
             'animals' => $animals,
