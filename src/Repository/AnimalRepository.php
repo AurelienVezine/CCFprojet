@@ -42,6 +42,25 @@ class AnimalRepository extends ServiceEntityRepository
         );
     }
 
+    public function findMostViewed()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.VueCount', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+    public function findMostViewedArray(int $page)
+    {
+        return $this->paginator->paginate(
+            $this->createQueryBuilder('a')
+            ->orderBy('a.VueCount', 'DESC')
+            ->getQuery()
+            ->getResult(),
+            $page,
+            5,
+    );
+    }
+
         /*
         return new Paginator($this
             ->createQueryBuilder('r')

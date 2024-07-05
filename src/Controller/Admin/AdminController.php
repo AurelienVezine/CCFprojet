@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Avis;
+use App\Repository\AnimalRepository;
 use App\Repository\AvisRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,11 +16,24 @@ class AdminController extends AbstractController
 {
 
     #[Route('/admin', name: 'admin.index')]
-    public function index(Request $request, AvisRepository $avisRepository, EntityManagerInterface $em): Response
+    public function index(Request $request, AvisRepository $avisRepository, EntityManagerInterface $em, AnimalRepository $animalRepository): Response
     {
+
         $avis = $avisRepository->findAll();
+        $animal = $animalRepository->findMostViewedArray($request->query->getInt('page', 1));
+        $animals = $animalRepository->findMostViewed();
+        $names = array_map(function($animal) {
+            return $animal->getPrenom();
+        }, $animals);
+        $viewCounts = array_map(function($animal) {
+            return $animal->getVueCount();
+        }, $animals);
         return $this->render('admin/admin.html.twig', [
             'avis' => $avis,
+            'names' => $names,
+            'viewCounts' => $viewCounts,
+            'animals' => $animals,
+            'animal' => $animal,
         ]);
     }
     #[Route('/{id}', name: 'admin.validate', methods: ['GET', 'POST'],requirements: ['id' => Requirement::DIGITS])]

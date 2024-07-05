@@ -51,6 +51,11 @@ class Animal
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column]
+    private ?int $VueCount = null;
+
+
+
 
     public function __construct()
     {
@@ -198,5 +203,18 @@ class Animal
 
         return $this;
     }
+
+    public function getVueCount(): ?int
+    {
+        return $this->VueCount;
+    }
+
+    public function setVueCount(int $VueCount): static
+    {
+        $this->VueCount = $VueCount;
+
+        return $this;
+    }
+
 
 }

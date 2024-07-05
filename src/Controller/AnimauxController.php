@@ -25,9 +25,11 @@ class AnimauxController extends AbstractController
     }
 
     #[Route('/{id}-{prenom}', name: 'show', methods: ['GET', 'POST'], requirements: ['id' => Requirement::DIGITS])]
-    public function show(Request $request, AnimalRepository $animalRepository, int $id, string $prenom)
+    public function show(Request $request, AnimalRepository $animalRepository, int $id, string $prenom, EntityManagerInterface $em)
     {
         $animals = $animalRepository->find($id);
+        $animals->setVueCount($animals->getVueCount() + 1);
+        $em->flush();
         if ($animals->getPrenom()!== $prenom) {
             return $this->redirectToRoute('animaux.show', ['prenom' => $prenom->getPrenom(), 'id' => $id], 301);
         }
