@@ -1,0 +1,15 @@
+
+<h1>ARCADIA</h1>
+<ul>
+    <li>Name: José Arcadia</li>
+    <li>Email: arcadia@mail.com</li>
+</ul>
+
+<p>
+    <strong> Validation de votre compte</strong><br/>
+    Bonjour {{user.firstname}} et bienvenu dans notre entreprise,
+    votre identifiant pour vous connecter à la partie Admin de notre site est {{ user.email }},
+    votre role est {{ user.roles |json_encode()}} cela vous donne accéss aux gestions du zoo et de la page web
+    Pour le mot de passe rapprochez vous du directeur pour qu'il vous le communique,
+    si jamais vous venez à oublier votre mot de passe pas d'inquietude le directeur vous en fournira un nouveau.
+</p>

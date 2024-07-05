@@ -6,9 +6,11 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 
@@ -25,7 +27,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/create', name: 'create')]
-    public function create(Request $request, EntityManagerInterface $em)
+    public function create(Request $request, EntityManagerInterface $em, MailerInterface $mailer)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -33,6 +35,13 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($user);
             $em->flush();
+            $mail = (new TemplatedEmail())
+                ->to($user->getEmail())
+                ->from('arcadia@mail.com')
+                ->subject('Bienvenue dans l\'entreprise ARCADIA')
+                ->htmlTemplate('email/user.html.twig')
+                ->context(['user' => $user]);
+            $mailer->send($mail);
             $this->addFlash('success', 'Votre utilisateur est bien créer');
             return $this->redirectToRoute('admin.user.index');
         }

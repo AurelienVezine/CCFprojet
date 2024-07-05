@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HorairesController!{% endblock %}
+
+{% block main %}
+    <h1 class="text-center border-bottom mb-5 p-4">Les Horaires</h1>
+    {% for servicename, day in groupedHoraires %}
+        <h2 class=" mb-1 p-4">{{ servicename }}</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Jours:</th>
+                <th>Matin:</th>
+                <th>Aprés-midi:</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for days, horaires in day %}
+                <tr>
+                    <td>{{ days }}</td>
+                    {% for horaire in horaires %}
+                        <td>{{ horaire.open |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close |format_datetime('none', 'short', locale='fr') }} </td>
+                        <td>{{ horaire.open2 |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close2 |format_datetime('none', 'short', locale='fr') }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    {% endfor %}
+
+{% endblock %}

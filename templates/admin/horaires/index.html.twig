@@ -1,0 +1,40 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Les Horaires{% endblock %}
+
+{% block main %}
+<h1>Les Horaires</h1>
+    <p>
+        <a class="btn btn-dark" href="{{ path('admin.horaire.create') }}">Ajouter un horaire</a>
+    </p>
+
+
+    {% for servicename, day in groupedHoraires %}
+    <h2>{{ servicename }}</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Jours:</th>
+                <th>Matin:</th>
+                <th>Aprés-midi:</th>
+                <th>Action:</th>
+            </tr>
+            </thead>
+            <tbody>
+    {% for days, horaires in day %}
+            <tr>
+                <td>{{ days }}</td>
+                {% for horaire in horaires %}
+                    <td>{{ horaire.open |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close |format_datetime('none', 'short', locale='fr') }} </td>
+                    <td>{{ horaire.open2 |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close2 |format_datetime('none', 'short', locale='fr') }}</td>
+                    <td><a class="btn btn-primary btn-sm" href="{{ path('admin.horaire.edit', {id: horaire.id})}}"><i class="bi bi-pen p-1"></i>Modifier</a></td>
+                {% endfor %}
+            </tr>
+    {% endfor %}
+            </tbody>
+
+        </table>
+    {% endfor %}
+
+
+{% endblock %}

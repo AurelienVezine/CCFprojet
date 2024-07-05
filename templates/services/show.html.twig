@@ -9,7 +9,7 @@
             <h6>Description:</h6>
             <p class="card-text">{{ services.description }}</p>
             <h5>Horaires :</h5>
-            <p>De 9h à 18h30 sans interuptions</p>
+            <a class="btn btn-sm btn-dark" href="{{ path('horaires.index') }}">Consulter notre page horaires</a>
         </div>
 
         <img src="{{ vich_uploader_asset(services, 'imageFile') }}" class="card-img-bottom" alt="...">
