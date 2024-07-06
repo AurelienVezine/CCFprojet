@@ -1,40 +1,32 @@
-<div class="d-flex flex-column flex-shrink-0 p-4 text-bg-dark" style="width: 280px;">
-    <a href="{{ path('admin.index') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <span class="fs-4"><i class="bi bi-house-gear p-2"></i>Administration</span>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="{{ path('home') }}" class="nav-link text-white" aria-current="page"><i class="bi bi-house-door p-1"></i>Site Home</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.index') }}" class="nav-link {{ app.current_route == 'admin.index' ? 'active' : '' }} text-white"><i class="bi bi-speedometer2 p-1"></i>Dashboard</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.user.index') }}" class="nav-link {{ app.current_route starts with 'admin.user.' ? 'active' : '' }} text-white"><i class="bi bi-person-gear p-1"></i>Users</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.service.index') }}" class="nav-link {{ app.current_route starts with 'admin.service.' ? 'active' : '' }} text-white"><i class="bi bi-cone-striped p-1"></i>Services</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.animal.index') }}" class="nav-link {{ app.current_route starts with 'admin.animal.' ? 'active' : '' }} text-white"><i class="fa-solid fa-paw p-1"></i>Animals</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.habitat.index') }}" class="nav-link {{ app.current_route starts with 'admin.habitat.' ? 'active' : '' }} text-white"><i class="fa-solid fa-earth-europe p-1"></i>Habitats</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.race.index') }}" class="nav-link {{ app.current_route starts with 'admin.race.' ? 'active' : '' }} text-white"><i class="fa-solid fa-dna p-1"></i>Breed</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.rapport.index') }}" class="nav-link {{ app.current_route starts with 'admin.rapport.' ? 'active' : '' }} text-white"><i class="fa-solid fa-file-waveform p-1"></i>Rapports</a>
-        </li>
-        <li>
-            <a href="{{ path('admin.horaire.index') }}" class="nav-link {{ app.current_route starts with 'admin.horaire.' ? 'active' : '' }} text-white"><i class="fa-solid fa-clock p-1"></i>Horaires</a>
-        </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-        <strong>{{ app.user.firstname ~' '~ app.user.lastname }}</strong>
-        <a class="btn btn-outline-danger btn-sm p-1" href="{{ path('app_logout') }}" role="button"><i class="fa-solid fa-user p-1"></i>Disconnect</a>
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand d-md-none" href="{{ path('admin.index') }}"><i class="bi bi-house-gear p-2"></i>Administration</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Navigation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="#">
+                            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
+                        </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('home') }}"><i class="bi bi-house-door p-1"></i>Site Home</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route == 'admin.index' ? 'active' : '' }}" href="{{ path('admin.index') }}"><i class="bi bi-speedometer2 p-1"></i>Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.user.' ? 'active' : '' }}" href="{{ path('admin.user.index') }}"><i class="bi bi-person-gear p-1"></i>Users</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.service.' ? 'active' : '' }}" href="{{ path('admin.service.index') }}"><i class="bi bi-cone-striped p-1"></i>Services</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.animal.' ? 'active' : '' }}" href="{{ path('admin.animal.index') }}"><i class="fa-solid fa-paw p-1"></i>Animals</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.habitat.' ? 'active' : '' }}" href="{{ path('admin.habitat.index') }}"><i class="fa-solid fa-earth-europe p-1"></i>Habitats</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.race.' ? 'active' : '' }}" href="{{ path('admin.race.index') }}"><i class="fa-solid fa-dna p-1"></i>Breed</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.rapport.' ? 'active' : '' }}" href="{{ path('admin.rapport.index') }}"><i class="fa-solid fa-file-waveform p-1"></i>Rapports</a></li>
+                    <li class="nav-item"><a class="nav-link {{ app.current_route starts with 'admin.horaire.' ? 'active' : '' }}" href="{{ path('admin.horaire.index') }}"><i class="fa-solid fa-clock p-1"></i>Horaires</a></li>
+                    <li class="nav-item mt-1"><strong class="p-1">{{ app.user.firstname ~' '~ app.user.lastname }}</strong><a class="btn btn-outline-danger btn-sm" href="{{ path('app_logout') }}" role="button"><i class="fa-solid fa-user p-1"></i>Disconnect</a></li>
+
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
+</nav>
