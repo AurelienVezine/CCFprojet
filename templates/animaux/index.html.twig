@@ -9,9 +9,9 @@
     </div>
 
     <div class="container marketing">
-        <div class="row">
+        <div class="row g-3">
     {% for animal in animals %}
-        <div class="col-lg-3 p-2">
+        <div class="col col-lg-3 col-sm-12">
             <div><img class="bd-placeholder-img rounded-circle" width="150" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(animal, 'imageFile') }}" alt=""></div>
                 <h2 class="fw-normal"><i class="fa-solid fa-paw p-2"></i>{{ animal.prenom }}</h2>
                 <h6><i class="fa-solid fa-dna p-1"></i>Breed -> {{animal.race.label}}</h6>

@@ -15,18 +15,19 @@
     </div>
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row g-3">
                 {% for service in services %}
-                    <div class="col">
+                    <div class="col col-lg-4 col-sm-12">
                         <div class="card shadow-sm">
                             <div><img class="bd-placeholder-img card-img-top" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"  src="{{ vich_uploader_asset(service, 'imageFile') }}" alt=""></div>
                             <div class="card-body">
-                                <p class="card-text">{{ service.nom}}</p>
+                                <h2 class="card-text">{{ service.nom}}</h2>
+                                <p class="card-text text-truncate">{{ service.description | nl2br}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a class="btn btn-sm btn-outline-secondary" href="{{ path('services.show', {id: service.id, nom: service.nom})}}">View details</a>
                                     </div>
-                                    <small class="text-body-secondary">Mise à jour le: {{ service.CreatedAt |format_datetime('short', 'none') }}</small>
+                                    <small class="text-body-secondary p-2">Mise à jour le: {{ service.CreatedAt |format_datetime('short', 'none') }}</small>
                                 </div>
                             </div>
                         </div>

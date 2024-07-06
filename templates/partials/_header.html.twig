@@ -1,13 +1,32 @@
+
 <header>
-         <nav class="navbar "  data-bs-theme="dark">
-            <div class="container-fluid d-flex justify-content-around" >
-                <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'horaires.' ? 'active' : '' }}" href="{{ path('horaires.index') }}"><i class="fa-solid fa-clock p-1"></i>Les Horaires</a>
-                    <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'services.' ? 'active' : '' }}" href="{{ path('services.index') }}"><i class="fa-solid fa-compass p-2"></i>Les Services</a>
-                    <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'animaux.' ? 'active' : '' }}" href="{{ path('animaux.index') }}"><i class="fa-solid fa-paw p-2"></i>Les Animaux</a>
-                    <a class="navbar-brand" href="{{ path('home') }}"><h3>ARCADIA</h3></a>
-                    <a class="link-light link-underline-opacity-0{{ app.current_route starts with 'habitats.' ? 'active' : '' }}" href="{{ path('habitats.index') }}" ><i class="fa-solid fa-earth-europe p-2"></i>Les Habitats</a>
-                    <a class="link-light link-underline-opacity-0{{ app.current_route == 'contact' ? 'active' : '' }}" href="{{ path('contact') }}"><i class="fa-solid fa-envelope p-2"></i>Contact</a>
-                    <a class="btn btn-outline-light " href="{{ path('admin.index') }}" role="button"><i class="fa-solid fa-user p-2"></i>Login</a>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('home') }}"><h3>ARCADIA</h3></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.current_route starts with 'horaires.' ? 'active' : '' }}" aria-current="page" href="{{ path('horaires.index') }}"><i class="fa-solid fa-clock p-2"></i>Les Horaires</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.current_route starts with 'services.' ? 'active' : '' }}" href="{{ path('services.index') }}"><i class="fa-solid fa-compass p-2"></i>Les Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.current_route starts with 'animaux.' ? 'active' : '' }}" href="{{ path('animaux.index') }}"><i class="fa-solid fa-paw p-2"></i>Les Animaux</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.current_route starts with 'habitats.' ? 'active' : '' }}" href="{{ path('habitats.index') }}" ><i class="fa-solid fa-earth-europe p-2"></i>Les Habitats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ app.current_route == 'contact' ? 'active' : '' }}" href="{{ path('contact') }}"><i class="fa-solid fa-envelope p-2"></i>Contact</a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-light " href="{{ path('admin.index') }}" role="button"><i class="fa-solid fa-user p-2"></i>Login</a>
             </div>
-        </nav>
+        </div>
+    </nav>
 </header>
