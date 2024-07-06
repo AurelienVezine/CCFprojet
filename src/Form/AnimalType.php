@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use function    symfony\component\translation\t;
 
 class AnimalType extends AbstractType
 {
@@ -26,12 +27,12 @@ class AnimalType extends AbstractType
             ])
             ->add('etat', ChoiceType::class, [
                 'choices' => [
-                    'Trés malade' => 'Trés malade',
-                    'Malade' => 'Malade',
-                    'En guerison' => 'En guerison',
-                    'Bien' => 'Bien',
-                    'Trés bien' => 'Trés bien',
-                    'En super forme' => 'En super forme',
+                    'Trés malade' => t('Trés malade'),
+                    'Malade' => t('Malade'),
+                    'En guerison' => t('En guerison'),
+                    'Bien' => t('Bien'),
+                    'Trés bien' => t('Trés bien'),
+                    'En super forme' => t('En super forme'),
                     ]
             ])
             ->add('race', EntityType::class, [
@@ -44,10 +45,10 @@ class AnimalType extends AbstractType
             ])
             ->add('updatedAt', null, [
                 'widget' => 'single_text',
-                'label'=> 'Mis à jour le:',
+                'label'=> t('Mis à jour le:'),
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Enregistrer',
+                'label' => t('Enregistrer'),
             ]);
 
     }

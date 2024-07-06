@@ -1,0 +1,23 @@
+vich_uploader.form_label.delete_confirm: 'Supprimer?'
+vich_uploader.link.download: Télécharger
+'Trés malade': 'Trés malade'
+Malade: Malade
+'En guerison': 'En guerison'
+Bien: Bien
+'Trés bien': 'Trés bien'
+'En super forme': 'En super forme'
+label: label
+nom: nom
+'Mis à jour le:': 'Mis à jour le:'
+Enregistrer: Enregistrer
+Prenom: Prenom
+Description: Description
+'Image file': 'Image file'
+Etat: Etat
+Race: Race
+Habitat: Habitat
+Email: Email
+Roles: Roles
+'Mot de passe': 'Mot de passe'
+Nom: Nom
+Prénom: Prénom

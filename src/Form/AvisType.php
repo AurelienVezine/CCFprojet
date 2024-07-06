@@ -16,7 +16,9 @@ class AvisType extends AbstractType
     {
         $builder
             ->add('pseudo')
-            ->add('comments', TextareaType::class)
+            ->add('comments', TextareaType::class, [
+                'label' => 'Commentaires',
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Soumettre',
                 'attr' => ['class' => 'btn btn-outline-dark'],
