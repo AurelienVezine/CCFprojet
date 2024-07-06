@@ -23,11 +23,11 @@
             <tbody>
     {% for days, horaires in day %}
             <tr>
-                <td>{{ days }}</td>
+                <td style="width: 150px">{{ days }}</td>
                 {% for horaire in horaires %}
-                    <td>{{ horaire.open |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close |format_datetime('none', 'short', locale='fr') }} </td>
-                    <td>{{ horaire.open2 |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close2 |format_datetime('none', 'short', locale='fr') }}</td>
-                    <td><a class="btn btn-primary btn-sm" href="{{ path('admin.horaire.edit', {id: horaire.id})}}"><i class="bi bi-pen p-1"></i>Modifier</a></td>
+                    <td style="width: 150px">{{ horaire.open |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close |format_datetime('none', 'short', locale='fr') }} </td>
+                    <td style="width: 150px">{{ horaire.open2 |format_datetime('none', 'short', locale='fr') }} - {{ horaire.close2 |format_datetime('none', 'short', locale='fr') }}</td>
+                    <td><a class="btn btn-primary btn-sm" href="{{ path('admin.horaire.edit', {id: horaire.id})}}"><i class="bi bi-pen p-1"></i></a></td>
                 {% endfor %}
             </tr>
     {% endfor %}

@@ -10,26 +10,26 @@
     <table class="table">
         <thead>
         <tr>
-            <th> {{knp_pagination_sortable(animals, 'Prenom', 'r.prenom')}}</th>
+            <th>{{knp_pagination_sortable(animals,'Prenom','r.prenom')}}</th>
             <th> Breed </th>
             <th> Habitat </th>
-            <th> {{knp_pagination_sortable(animals, 'Etat', 'r.etat')}}</th>
+            <th>{{knp_pagination_sortable(animals,'Etat','r.etat')}}</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for animal in animals %}
             <tr>
-                <td>{{animal.prenom}}</td>
-                <td>{{ animal.race.label }}</td>
-                <td>{{ animal.habitat.nom }}</td>
-                <td>{{ animal.etat }}</td>
+                <td style="width: 150px">{{animal.prenom}}</td>
+                <td style="width: 150px">{{ animal.race.label }}</td>
+                <td style="width: 150px">{{ animal.habitat.nom }}</td>
+                <td style="width: 150px">{{ animal.etat }}</td>
                 <td>
                     <div class="d-flex gap-1">
-                        <a class="btn btn-primary btn-sm" href="{{ path('admin.animal.edit', {id: animal.id})}}"><i class="bi bi-pen p-1"></i>Editer</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.animal.edit', {id: animal.id})}}"><i class="bi bi-pen p-1"></i></a>
                         <form action="{{ path('admin.animal.delete', {id: animal.id})}}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i>Supprimer</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i></button>
                         </form>
                     </div>
                 </td>

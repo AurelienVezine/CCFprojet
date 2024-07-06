@@ -10,32 +10,32 @@
     <table class="table">
         <thead>
         <tr>
-            <th> Nom:{{knp_pagination_sortable(rapports, '', 'a.prenom')}}</th>
-            <th> Detail :</th>
-            <th> Foodoffered:</th>
-            <th> Foodquantity:</th>
-            <th> Commentaire:</th>
+            <th>{{knp_pagination_sortable(rapports, 'Nom', 'a.prenom')}}</th>
+            <th>Detail :</th>
+            <th>Foodoffered:</th>
+            <th>Foodquantity:</th>
+            <th>Commentaire:</th>
             <th>Créateur:</th>
-            <th>Edité le :{{knp_pagination_sortable(rapports, '', 'r.date')}}</th>
+            <th>{{knp_pagination_sortable(rapports,'Edité le:','r.date')}}</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for rapport in rapports %}
             <tr>
-                <td>{{ rapport.animal.prenom}}</td>
-                <td>{{rapport.detail}}</td>
-                <td>{{rapport.foodoffered}}</td>
-                <td>{{rapport.foodquantity}}</td>
-                <td>{{rapport.conditiondetails}}</td>
-                <td>{{rapport.user.firstname ~ rapport.user.lastname}}</td>
-                <td>{{ rapport.date |format_datetime('short', 'none', locale='fr') }}</td>
+                <td style="width: 150px">{{ rapport.animal.prenom}}</td>
+                <td style="width: 150px">{{rapport.detail}}</td>
+                <td style="width: 150px">{{rapport.foodoffered}}</td>
+                <td style="width: 150px">{{rapport.foodquantity}}</td>
+                <td style="width: 150px">{{rapport.conditiondetails}}</td>
+                <td style="width: 150px">{{rapport.user.firstname ~ rapport.user.lastname}}</td>
+                <td style="width: 150px">{{ rapport.date |format_datetime('short', 'none', locale='fr') }}</td>
                 <td>
                     <div class="d-flex gap-1">
-                        <a class="btn btn-primary btn-sm" href="{{ path('admin.rapport.edit', {id: rapport.id})}}"><i class="bi bi-pen p-1"></i>Editer</a>
+                        <a class="btn btn-primary btn-sm" href="{{ path('admin.rapport.edit', {id: rapport.id})}}"><i class="bi bi-pen p-1"></i></a>
                         <form action="{{ path('admin.rapport.delete', {id: rapport.id})}}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i>Supprimer</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i></button>
                         </form>
                     </div>
                 </td>

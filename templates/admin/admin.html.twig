@@ -23,7 +23,7 @@
 {% include 'partials/_navAdmin.html.twig' %}
 
 
-<div class="container py-4 my-4">
+<div class="container py-2 my-2">
     {% include 'partials/flash.html.twig' %}
     {% block main %}
         <h1 class="p-4">Bienvenu "{{ app.user.firstname ~' '~ app.user.lastname }}"</h1>
@@ -33,7 +33,6 @@
             <tr>
                 <th> Pseudo</th>
                 <th> Commentaire </th>
-                <th> Statu </th>
                 <th> Action </th>
             </tr>
             </thead>
@@ -41,15 +40,14 @@
             {% for avi in avis %}
                 {% if avi.isVisible == false  %}
                 <tr>
-                    <td>{{avi.pseudo}}</td>
-                    <td>{{ avi.comments }}</td>
-                    <td>{{ avi.isVisible}}</td>
+                    <td style="width: 150px">{{avi.pseudo}}</td>
+                    <td style="width: 500px">{{ avi.comments }}</td>
                     <td>
                         <div class="d-flex gap-1">
-                            <a class="btn btn-success btn-sm" href="{{ path('admin.validate', {id: avi.id})}}"><i class="bi bi-envelope-check p-1"></i>Valider</a>
+                            <a class="btn btn-success btn-sm" href="{{ path('admin.validate', {id: avi.id})}}"><i class="bi bi-envelope-check p-1"></i></a>
                             <form action="{{ path('admin.delete', {id: avi.id})}}" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i>Supprimer</button>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash p-1"></i></button>
                             </form>
                         </div>
                     </td>
