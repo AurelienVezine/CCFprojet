@@ -9,18 +9,21 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use function    symfony\component\translation\t;
 
 class AvisType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('pseudo')
+            ->add('pseudo', null, [
+                'label' => t('Pseudo'),
+            ])
             ->add('comments', TextareaType::class, [
-                'label' => 'Commentaires',
+                'label' => t('Commentaires'),
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Soumettre',
+                'label' => t('Soumettre'),
                 'attr' => ['class' => 'btn btn-outline-dark'],
             ])
         ;

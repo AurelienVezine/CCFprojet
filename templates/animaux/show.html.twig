@@ -13,7 +13,7 @@
             <h6>Description:</h6>
             <p class="card-text">{{ animals.description }}</p>
             <h6>Habitat:</h6>
-            <p>{{ animals.habitat.nom }} -> <a href="">Allez voir</a></p>
+            <a class="btn btn-sm btn-dark mb-1 p-1" href="{{ path('habitats.show', {id: animals.habitat.id}) }}">{{ animals.habitat.nom }}</a>
             <h6>Santé de l'animal:</h6>
             <p>{{ animals.etat }}</p>
         </div>
