@@ -69,10 +69,15 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: ['DELETE'],requirements: ['id' => Requirement::DIGITS])]
     public function delete(User $user, Request $request, EntityManagerInterface $em)
     {
-        $em->remove($user);
-        $em->flush();
-        $this->addFlash('success', 'Votre utilisateur est bien supprimer');
-        return $this->redirectToRoute('admin.user.index');
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            $this->addFlash('danger', 'Vous ne pouvez pas supprimer un utilisateur avec le rôle ROLE_ADMIN');
+            return $this->redirectToRoute('admin.user.index');
+        }
+
+            $em->remove($user);
+            $em->flush();
+            $this->addFlash('success', 'Votre utilisateur est bien supprimer');
+            return $this->redirectToRoute('admin.user.index');
     }
 
 }

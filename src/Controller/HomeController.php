@@ -5,18 +5,21 @@ namespace App\Controller;
 
 
 use App\Entity\Avis;
+use App\Entity\User;
 use App\Form\AvisType;
 use App\Repository\AvisRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(Request $request, AvisRepository $avisRepository,EntityManagerInterface $em): Response
+    public function index(Request $request, AvisRepository $avisRepository,EntityManagerInterface $em, UserPasswordHasherInterface $hasher): Response
     {
         $avis = new Avis();
         $form = $this->createForm(AvisType::class, $avis);
