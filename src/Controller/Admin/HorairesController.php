@@ -59,4 +59,12 @@ class HorairesController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[Route('/{id}', name: 'delete', methods: ['DELETE'],requirements: ['id' => Requirement::DIGITS])]
+    public function delete(Horaires $horaires, Request $request, EntityManagerInterface $em)
+    {
+        $em->remove($horaires);
+        $em->flush();
+        $this->addFlash('success', 'Votre horaire est bien supprimer');
+        return $this->redirectToRoute('admin.horaire.index');
+    }
 }
