@@ -12,16 +12,16 @@
         <tr>
             <th> Nom</th>
             <th> Prénom</th>
-            <th>Email</th>
+            <th class="d-none d-md-table-cell">Email</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td style="width: 100px">{{user.lastname}}</td>
-                <td style="width: 100px">{{user.firstname}}</td>
-                <td style="width: 100px">{{user.email}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.firstname}}</td>
+                <td class="d-none d-md-table-cell">{{user.email}}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.user.edit', {id: user.id})}}"><i class="bi bi-pen p-1"></i></a>

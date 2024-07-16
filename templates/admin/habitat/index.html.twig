@@ -11,10 +11,10 @@
         <thead>
         <tr>
             <th> Nom:</th>
-            <th> Description:</th>
+            <th class="d-none d-md-table-cell"> Description:</th>
             <th> Etat:</th>
-            <th> Commentaire:</th>
-            <th> Mise à jour le:</th>
+            <th class="d-none d-md-table-cell"> Commentaire:</th>
+            <th> Mise à jour</th>
             <th>Actions:</th>
         </tr>
         </thead>
@@ -22,9 +22,9 @@
         {% for habitat in habitats %}
             <tr>
                 <td style="width: 150px">{{habitat.nom}}</td>
-                <td class="text-truncate" style="max-width: 100px;">{{habitat.description}}</td>
+                <td class="d-none d-md-table-cell text-truncate" style="max-width: 100px;">{{habitat.description}}</td>
                 <td style="width: 150px">{{habitat.etat}}</td>
-                <td style="width: 150px">{{habitat.commentaire}}</td>
+                <td class="d-none d-md-table-cell" style="width: 150px">{{habitat.commentaire}}</td>
                 <td style="width: 150px">{{ habitat.CreatedAt |format_datetime('short', 'none') }}</td>
                 <td>
                     <div class="d-flex gap-1">
