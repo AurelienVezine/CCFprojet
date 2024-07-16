@@ -11,7 +11,7 @@
         <thead>
         <tr>
             <th>{{knp_pagination_sortable(animals,'Prenom','r.prenom')}}</th>
-            <th> Breed </th>
+            <th class="d-none d-md-table-cell"> Breed </th>
             <th> Habitat </th>
             <th>{{knp_pagination_sortable(animals,'Etat','r.etat')}}</th>
             <th>Actions</th>
@@ -21,7 +21,7 @@
         {% for animal in animals %}
             <tr>
                 <td style="width: 150px">{{animal.prenom}}</td>
-                <td style="width: 150px">{{ animal.race.label }}</td>
+                <td class="d-none d-md-table-cell" style="width: 150px">{{ animal.race.label }}</td>
                 <td style="width: 150px">{{ animal.habitat.nom }}</td>
                 <td style="width: 150px">{{ animal.etat }}</td>
                 <td>

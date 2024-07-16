@@ -11,11 +11,11 @@
         <thead>
         <tr>
             <th>{{knp_pagination_sortable(rapports, 'Nom', 'a.prenom')}}</th>
-            <th>Detail :</th>
-            <th>Foodoffered:</th>
-            <th>Foodquantity:</th>
-            <th>Commentaire:</th>
-            <th>Créateur:</th>
+            <th>Detail</th>
+            <th class="d-none d-md-table-cell">Foodoffered:</th>
+            <th class="d-none d-md-table-cell">Foodquantity:</th>
+            <th class="d-none d-md-table-cell">Commentaire:</th>
+            <th class="d-none d-md-table-cell">Créateur:</th>
             <th>{{knp_pagination_sortable(rapports,'Edité le:','r.date')}}</th>
             <th>Actions</th>
         </tr>
@@ -23,13 +23,13 @@
         <tbody>
         {% for rapport in rapports %}
             <tr>
-                <td style="width: 150px">{{ rapport.animal.prenom}}</td>
-                <td style="width: 150px">{{rapport.detail}}</td>
-                <td style="width: 150px">{{rapport.foodoffered}}</td>
-                <td style="width: 150px">{{rapport.foodquantity}}</td>
-                <td style="width: 150px">{{rapport.conditiondetails}}</td>
-                <td style="width: 150px">{{rapport.user.firstname ~ rapport.user.lastname}}</td>
-                <td style="width: 150px">{{ rapport.date |format_datetime('short', 'none', locale='fr') }}</td>
+                <td>{{ rapport.animal.prenom}}</td>
+                <td>{{rapport.detail}}</td>
+                <td class="d-none d-md-table-cell">{{rapport.foodoffered}}</td>
+                <td class="d-none d-md-table-cell">{{rapport.foodquantity}}</td>
+                <td class="d-none d-md-table-cell">{{rapport.conditiondetails}}</td>
+                <td class="d-none d-md-table-cell">{{rapport.user.firstname ~ rapport.user.lastname}}</td>
+                <td>{{ rapport.date |format_datetime('short', 'none', locale='fr') }}</td>
                 <td>
                     <div class="d-flex gap-1">
                         <a class="btn btn-primary btn-sm" href="{{ path('admin.rapport.edit', {id: rapport.id})}}"><i class="bi bi-pen p-1"></i></a>
