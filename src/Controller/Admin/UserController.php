@@ -37,7 +37,7 @@ class UserController extends AbstractController
             $em->flush();
             $mail = (new TemplatedEmail())
                 ->to($user->getEmail())
-                ->from('arcadia@mail.com')
+                ->from('arcadia@myprojet.fr')
                 ->subject('Bienvenue dans l\'entreprise ARCADIA')
                 ->htmlTemplate('email/user.html.twig')
                 ->context(['user' => $user]);
