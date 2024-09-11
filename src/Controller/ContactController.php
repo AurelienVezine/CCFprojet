@@ -24,8 +24,8 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $mail = (new TemplatedEmail())
-                ->to('arcadia@myprojet.fr')
-                ->from('arcadia@myprojet.fr')
+                ->to('arcadia@zooarcadia.fr')
+                ->from('arcadia@zooarcadia.fr')
                 ->subject($data->title)
                 ->htmlTemplate('email/contact.html.twig')
                 ->context(['data' => $data]);
