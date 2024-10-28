@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des 10 Meilleurs Zoo de France{% endblock %}
+
+{% block main %}
+    <h1 class="zoo_title">Liste des 10 Meilleurs Zoo de France</h1>
+{% for cursors in cursor %}
+    <div class="zoo_container">
+        <div>
+            <h3 class="zoo_title2">{{ cursors.number }} - {{ cursors.name }}</h3>
+            <p class="zoo_description" >{{ cursors.description |nl2br}}</p>
+        </div>
+    <img class="zoo_img" src="{{ cursors.image }}" alt="photo-de-zoo">
+    </div>
+{% endfor %}
+{% endblock %}

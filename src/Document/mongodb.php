@@ -6,8 +6,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Doctrine\ODM\MongoDB\Types\Type as Type;
 
 
-#[MongoDB\Document(db:"mongodb",collection: "animaux")]
-class mongodb
+#[MongoDB\Document(db:"mongodb",collection: "zoo")]
+class testmongodb
 {
 #[MongoDB\Id]
 private $id;
