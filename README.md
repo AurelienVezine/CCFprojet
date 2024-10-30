@@ -94,6 +94,11 @@ Ce système de gestion de zoo pour son propriétaire propose une interface pour 
     ###> symfony/mailer ###
     MAILER_DSN=smtp://localhost:1025
     ###< symfony/mailer ###
+
+    ###> doctrine/mongodb-odm-bundle ###
+    MONGODB_URL=mongodb://localhost:27017
+    MONGODB_DB=mongodb
+    ###< doctrine/mongodb-odm-bundle ###
     
 ## Installation Mailpit pour Windows: 
 - https://mailpit.axllent.org/docs/install/
@@ -120,7 +125,18 @@ cela va vous créer votre base de donner avec comme identifiant root et mp root 
 ![capture acceuil admin en large.](assets/imageGit/startimport.png)
 - Une fois l'importation terminer cela doit resembler dans votre ongler schemas à sa:
 ![capture acceuil admin en large.](assets/imageGit/finalbdd.png)
-- Voila tout est bon pour la base de données 
+- Voila tout est bon pour la base de données
+### Installation MongoDb
+- https://www.mongodb.com/try/download/community
+en cas de probleme pour votre php.ini je vous un mis un dossier zip don Doc/... php_mongodb.dll vous devez le copier/coller dans votre dossier PHP dans ext, puis dans le fichier php.ini vous devez allez créer la ligne extension=mongodb juste en dessou de celle de Mysql  
+Si vous rencontrez un probleme pour le bundles je vous donne la commande a taper une fois les modification au dossier et fichier php
+    composer require doctrine/mongodb-odm-bundle
+  
+### Creation de la base de données Mongodb:
+    php bin/console doctrine:mongodb:schema:create
+cela va vous créer votre base de donner MongoDB avec comme collection "Zoo".
+### Importation du document.json:
+Dans le dossier Doc/... vous trouverais le fichier mongodb.zoo.json vous devais l'importer dans votre collection "Zoo" qui a etait créer au paravent 
 
 # Utilisation
 Une fois l'installation terminée, vous pouvez lancer l'application avec l'un des serveurs locaux :
