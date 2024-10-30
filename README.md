@@ -130,7 +130,7 @@ cela va vous créer votre base de donner avec comme identifiant root et mp root 
 - https://www.mongodb.com/try/download/community
 - En cas de probleme pour votre php.ini je vous un mis un dossier zip don Doc/... php_mongodb.dll vous devez le copier/coller dans votre dossier PHP dans ext, puis dans le 
   fichier php.ini vous devez allez créer la ligne extension=mongodb juste en dessou de celle de Mysql
-# Si vous rencontrez un probleme pour le bundles je vous donne la commande a taper une fois les modification au dossier et fichier php:
+#### Si vous rencontrez un probleme pour le bundles je vous donne la commande a taper une fois les modification au dossier et fichier php:
     composer require doctrine/mongodb-odm-bundle  
 ### Creation de la base de données Mongodb:
     php bin/console doctrine:mongodb:schema:create
