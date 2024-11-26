@@ -17,7 +17,7 @@ security:
             security: false
         main:
             lazy: true
-            provider: app_user_provider
+            provider:
 
             remember_me:
                 secret: '%kernel.secret%'

@@ -66,8 +66,7 @@
                     id="animalViewsChart"
                     width="200"
                     height="100"
-                    data-labels="{{ names|json_encode }}"
-                    data-values="{{ viewCounts|json_encode }}"
+                    data-url="{{ absolute_url(path('api_chartjs')) }}"
             ></canvas>
             <div class="container">
             <table class="table mt-5">
